@@ -1,0 +1,257 @@
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #071810;
+  color: white;
+  overflow: hidden;
+}
+
+#game {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 400px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  display: block;
+}
+
+.hud {
+  position: absolute;
+  inset: 0 0 auto;
+  padding: max(18px, env(safe-area-inset-top)) 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.brand {
+  font-size: clamp(17px, 3vw, 25px);
+  font-weight: 1000;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px #0009;
+}
+
+.brand span,
+.panel h1 span {
+  color: #ffd166;
+}
+
+.stats {
+  display: flex;
+  gap: clamp(8px, 2vw, 20px);
+  font-size: clamp(12px, 2vw, 16px);
+  font-weight: 800;
+  text-shadow: 0 2px 8px #000;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+button, select {
+  font: inherit;
+}
+
+.actions button,
+.mobile-controls button {
+  pointer-events: auto;
+  color: white;
+  background: #102a23bb;
+  border: 1px solid #ffffff40;
+  border-radius: 14px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.actions button {
+  width: 42px;
+  height: 42px;
+  font-size: 19px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 5;
+  padding: 20px;
+  background: #03110c72;
+  backdrop-filter: blur(7px);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.panel {
+  width: min(430px, 100%);
+  padding: clamp(24px, 6vw, 42px);
+  border: 1px solid #ffffff2e;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #193e31ee, #081a16f2);
+  box-shadow: 0 25px 90px #0009;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #b4e6a1;
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 900;
+}
+
+.panel h1 {
+  font-size: clamp(36px, 9vw, 58px);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin: 18px 0;
+}
+
+.panel h2 {
+  letter-spacing: 3px;
+}
+
+.panel p {
+  color: #d0e1d7;
+  line-height: 1.6;
+}
+
+.primary {
+  width: 100%;
+  padding: 15px 18px;
+  margin-top: 16px;
+  color: #102018;
+  background: linear-gradient(110deg, #ffe28a, #ffb83e);
+  border: 0;
+  border-radius: 12px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 6px 25px #ffbd4930;
+}
+
+.primary:active {
+  transform: scale(.98);
+}
+
+.hint {
+  font-size: 11px;
+  margin-bottom: 0;
+}
+
+.setting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #ffffff20;
+  text-align: left;
+}
+
+.setting select {
+  max-width: 140px;
+  padding: 7px;
+  border-radius: 8px;
+  background: #183a2e;
+  color: white;
+  border: 1px solid #ffffff30;
+}
+
+.setting input {
+  accent-color: #ffd166;
+  width: 20px;
+  height: 20px;
+}
+
+.mobile-controls {
+  position: absolute;
+  inset: auto 0 max(24px, env(safe-area-inset-bottom));
+  display: flex;
+  justify-content: center;
+  gap: clamp(8px, 3vw, 18px);
+  z-index: 3;
+}
+
+.mobile-controls button {
+  width: clamp(48px, 13vw, 64px);
+  height: clamp(48px, 13vw, 64px);
+  font-size: 21px;
+  touch-action: none;
+}
+
+.mobile-controls button:active {
+  background: #8da88cbb;
+}
+
+.footer {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #ffffffa0;
+  pointer-events: none;
+}
+
+.footer span {
+  color: #ffd166;
+}
+
+@media (min-width: 800px) {
+  .mobile-controls {
+    opacity: .45;
+  }
+
+  .mobile-controls:hover {
+    opacity: 1;
+  }
+}
+
+@media (max-height: 500px) {
+  .panel {
+    padding: 16px 24px;
+  }
+
+  .panel h1 {
+    font-size: 36px;
+    margin: 10px;
+  }
+
+  .panel p {
+    margin: 8px 0;
+  }
+
+  .primary {
+    margin-top: 8px;
+  }
+
+  .mobile-controls {
+    bottom: 8px;
+  }
+}
